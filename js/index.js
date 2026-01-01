@@ -46,7 +46,7 @@ $(document).ready(function () {
       pos.x += pos.dx;
       pos.y += pos.dy;
 
-      // 경계 반전
+
       if (pos.x > 80 || pos.x < 20) pos.dx = -pos.dx;
       if (pos.y > 80 || pos.y < 20) pos.dy = -pos.dy;
     });
@@ -55,16 +55,8 @@ $(document).ready(function () {
       `radial-gradient(circle at ${pos.x}% ${pos.y}%, ${pos.color}, transparent 70%)`
     ).join(',');
 
-    // body와 #project 둘 다 배경 적용
-    // const project = document.getElementById("project");
-
     document.body.style.background = bg;
     document.body.style.backgroundBlendMode = "screen";
-
-    // if (project) {
-    //   project.style.background = bg;
-    //   project.style.backgroundBlendMode = "screen";
-    // }
 
     requestAnimationFrame(updateBackground);
   }
@@ -76,7 +68,7 @@ $(document).ready(function () {
   function initInkEffect(sectionId) {
     const section = document.getElementById(sectionId);
 
-    // 캔버스 생성 및 삽입
+    // 캔버스 생성 
     const canvas = document.createElement('canvas');
     section.appendChild(canvas);
     const ctx = canvas.getContext('2d');
@@ -208,12 +200,6 @@ $(document).ready(function () {
   observer.observe(work);
 
 
- 
-
-
-
-
-
 
 //Work 
 window.onload = function() {
@@ -294,6 +280,28 @@ window.onload = function() {
 };
 
 
+//project
+const swiper = new Swiper(".mySwiper", {
+  slidesPerView: 3,
+  spaceBetween: 20,
+  slidesPerGroup: 3,
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+
+  breakpoints: {
+    0: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+    },
+    980: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+    }
+  }
+});
 
 
 }) //jquery end
