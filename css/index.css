@@ -540,7 +540,6 @@ text-shadow: 0 10px 10px rgba(161, 196, 234, 0.45);
 }
 
 /* skill */
-
 #skill{
    width: 100%;
    padding: 100px;
@@ -562,9 +561,11 @@ text-shadow: 0 10px 10px rgba(161, 196, 234, 0.45);
   font-weight: 500;    
   -webkit-text-stroke: 2px #A1C4EA;
   font-size: 60px;
-  width: fit-content;
-  margin: 15px auto 50px; 
-  transform: translateX(160px); 
+  font-size: clamp(15px, 6vw, 60px);
+  margin-top: 15px;
+  margin-bottom: 50px;
+  padding-left: 50%;
+white-space: nowrap;
 }
 
 /* slide_box */
@@ -958,8 +959,8 @@ a:focus, a:active {
 
 .swiper_about_box{
   border-radius: 30px;
-box-shadow: inset 0 0 8px 1px #c4d5e7;
-padding: 20px 0;
+  box-shadow: inset 0 0 8px 1px #c4d5e7;
+  padding: 20px 0;
 }
 
 
@@ -1018,7 +1019,6 @@ text-shadow: 0 4px 10px rgba(0,0,0,0.35);
 
 
 /* contact */
-
 #contact{
   position: relative;
  background-color: #FFF;
@@ -1038,11 +1038,12 @@ text-shadow: 0 4px 10px rgba(0,0,0,0.35);
   justify-content: space-around;
   position: absolute;
   top: 40%;
-  left: 50%; /* 화면 중앙 정렬을 위한 팁 */
+  left: 50%; 
   transform: translateX(-50%);
-  width: 100%; /* 혹은 원하는 넓이 (예: 1200px) */
+  width: 100%;
   max-width: 1400px;
   z-index: 10;
+  perspective: 1000px;
 }
 
 .contact_text_bottom{
@@ -1069,10 +1070,9 @@ border-top-left-radius: 100%;
 }
 
 .contact_card {
-  width: 600px;
-  height: 280px;
-  perspective: 1000px; 
- 
+  max-width: 600px;
+  width: 100%;
+  height: 280px; 
   z-index: 10;
 }
 
@@ -1101,27 +1101,18 @@ border-top-left-radius: 100%;
   border-radius: 10px;
 }
 
-/* 앞 */
+/* front */
 .card-front {
   background-color: #A1C4EA;
-
-  background-image: 
-    url("../img/logo_sky.png");
-
-  background-repeat: 
-    no-repeat;
-
-  background-size: 
-    200px;
-
-  background-position: 
-    right 20px bottom 20px;
-
+  background-image: url("../img/logo_sky.png");
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: right 20px bottom 20px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
 }
 
 
-/* 뒷 */
+/*back */
 .card-back {
   background: #FFF;
   transform: rotateY(180deg); 
@@ -1130,7 +1121,7 @@ border-top-left-radius: 100%;
 
 
 .card-front {
-  font-size: 50px;
+  font-size: clamp(40px, 3vw, 50px);
   font-weight: 600;
   display: flex;
   flex-direction: column; 
@@ -1144,7 +1135,7 @@ border-top-left-radius: 100%;
 
 .card-front span {
   margin-top: 30px; 
-  font-size: 24px; 
+  font-size: clamp(19px, 3vw, 24px);
   font-weight: 400;
   color: #FFF;
 text-shadow: 0 4px 10px rgba(0,0,0,0.35);
@@ -1598,6 +1589,8 @@ top: 70%;
 #skill{
   padding-top: 190px;
 }
+
+
   .card {
     min-height: 120px;      
     padding: 7px;          
@@ -1734,7 +1727,7 @@ top: 70%;
 @media (max-width: 750px) {
 
 #skill{
-  padding-top: 210px;
+  margin-top: 210px;
 }
   .card {
     min-height: 100px;      
@@ -1868,7 +1861,37 @@ header h1 {
     padding: 10px 20px;
     border-radius: 40px;
   }
+    .contact_text_bottom{
+    margin-top: -50px;
+  }
+}
+
+/* 680 */
+@media (max-width: 680px) {
   
+.contact_text_bottom{
+font-size: 30px;
+}
+
+.contact_card {
+  max-width: 480px;
+  width: 100%;
+  height: 220px; 
+}
+
+.card-front {
+background-size: 150px;
+}
+
+.card-back{
+  font-size:1rem;
+}
+
+.top-right-logo{
+width: 150px;
+height: auto;
+}
+
 }
 
 
@@ -1882,11 +1905,83 @@ header h1 {
     font-size: 70px;
   }
 
-.text2 {left: 5%; top: 52%;}
-.text3 { right: 10%;  top: 30%; white-space: nowrap;left: auto;}
-.text4 { top: 65%; left: 35%;}
-.text5 { bottom: 25%; right: 30%;;}
-.text6 { top: 65%; right: 10%;}
+  .text2,
+  .text3,
+  .text4,
+  .text5,
+  .text6,
+  .shape {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+
+.text2 {
+    left: 5vw;
+    top: 61vh;
+    font-size: 12px;
+    color: #a1b1c2;
+  }
+
+  .text3 {
+    top: 32vh;
+    right: 10vw;
+    font-size: 12px;
+    color: #90a5bb;
+  }
+
+  .text4 {
+    top: 75vh;
+    left: 25vw;
+  }
+
+  .text5 {
+    bottom: 15vh;
+    right: 30vw;
+  }
+
+  .text6 {
+    top: 68vh;
+    right: 10vw;
+  }
+
+  .shape:nth-child(1) {
+    top: 22vh;
+    left: 8vw;
+  }
+
+  .shape:nth-child(2) {
+    top: 82vh;
+    right: 22vw;
+  }
+
+  .shape:nth-child(3) {
+    bottom: 17vh;
+    left: 12vw;
+  }
+
+  .shape:nth-child(4) {
+    top: 36vh;
+    right: 12vw;
+  }
+
+  #skill{
+    padding: 100px 0;
+    box-sizing: border-box;
+  }
+
+  .skill_text{
+    margin-top: 150px;
+  }
+
+.skill_text_bottom{
+  font-size: 40px;
+}
+
+
+
 }
 
 
@@ -1904,38 +1999,20 @@ header h1 {
   font-weight: 700;
 }
 
-.container>h1 {
-position: relative; 
-  left: -20px;
-  top: 10%;
+.container>h1 { 
+  position: relative; 
+  left: -20px; 
+  top: 10%; }
+
+
+.skill_text_bottom{
+  padding-left:0;
+  text-align: center;
+  font-size: 35px;
+  padding-left: 15px;
+
 }
-
-.text2 {left: 5%; top: 61%; font-size: 12px; color: #a1b1c2; }
-.text3 { color: #90a5bb; font-size: 12px;}
-.text4 { top: 75%; left: 25%;}
-.text5 { bottom: 15%; right: 30%;;}
-.text6 { top: 68%; right: 10%;}
-
-.shape:nth-child(1) {
-	top: 22%;
-	left: 8%;
-}
-
-.shape:nth-child(2) {
-top: 82%;
-	right: 22%;
-}
-
-.shape:nth-child(3) {
-bottom: 17%;
-	left: 12%;
-}
-
-.shape:nth-child(4) {
-top: 36%;
-	right: 12%;
-}
-
+  
 }
 
 
@@ -1944,18 +2021,15 @@ top: 36%;
 @media (max-width: 562px) {
 
 .text_box_top{
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .text_box_bottom{
   font-size: 12px;
 }
 
-
 .textbox_text{
   font-size: 11px;
-  display: flex;
-  margin-left: 100px;
 }
 
 .textbox_text_left{
@@ -1966,16 +2040,121 @@ top: 36%;
   margin: 0;
 }
 
-
 .profile_box{
-  gap: 10px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_img,
+  .profile_img_c {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+  margin: 0;
+  }
+
+.about_right_box{
+  overflow: hidden;
+}
+
+.textbox_text{
+  width: 300px;
+  height: 130px;
+  margin: 0;
+  padding: 0;
+  margin-left: 30px;
+
+}
+.textbox_c {
+  margin-bottom: 5px;
+}
+
+.introduce_box {
+  max-width: 300px;
+  width: 100%;
+  padding: 10px 5px;
 }
 
 .about_me_text{
   margin-top: 0;
 }
   
+.about_right_box_text_box_interest {
+  display: none;
+}
 
+
+.textbox_text_left_c{
+width: 80px;
+}
+
+.textbox_2{
+  min-height: 0;
+}
+
+.textbox_2_c{
+  height: 80px;
+  margin-left: 130px;
+  padding: 0;
+}
+
+.text_line_1{
+  height: 110px;
+}
+
+.text_line_2{
+  height: 70px;
+}
+
+/* contact */
+
+.contact_card {
+  max-width: 350px;
+  height: 210px; 
+}
+
+.card-front {
+background-size: 100px;
+font-size: 30px;
+padding-left: 50px;
+}
+
+.card-back{
+  font-size:1rem;
+}
+
+.contact_card_text_p{
+padding-left: 50px;
+padding-bottom: 50px;
+box-sizing: border-box;
+}
+
+.contact_card_text>img{
+  margin-left: 70%;
+  margin-top: -10%;
+}
+
+.contact_card_text p{
+  font-size: 15px;
+  
+}
+
+.top-right-logo{
+width: 130px;
+height: auto;
+position: static;
+}
+.card-inner, .card-front, .card-back {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .reserved{
+    font-size: 14px;
+  }
 }
 
 /* 510 */
@@ -1987,6 +2166,76 @@ top: 36%;
   .contact_text {
     font-size: 50px;
   }
+.shape, .container, .text, .work_img, .swiper-slide {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+.about_left_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
+  .profile_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+  }
+
+.skill_text_bottom{
+  padding-left:0;
+  text-align: center;
+  font-size: 25px;
+  margin-left: 6px;
+  -webkit-text-stroke: 0.8px #A1C4EA;
+}
+
+ .card {
+    padding: 0;          
+  }
+
+  .card img {
+    width: 55px;
+    height: auto;         
+  }
+
+
+.img_box_bottom{
+  gap: 20px;
+}
+
+.card_bottom{
+  font-size: 30px;
+}
+
+ .work_img {
+    width: 100px; 
+  }
+
+  .work_img_name{
+     width: 100px; 
+  }
+.slide_box_bottom{
+  padding: 20px;
+}
+.card_bottom{
+  font-size: 25px;
+  -webkit-text-stroke: 0.5px #ffffff;
 
 }
+
+/* contact */
+.contact_text_bottom{
+font-size: 22px;
+  -webkit-text-stroke: 1px #A1C4EA;
+
+}
+
+}
+
+
