@@ -282,9 +282,7 @@ window.onload = function() {
 
 //project
 const swiper = new Swiper(".mySwiper", {
-  slidesPerView: 3,
   spaceBetween: 20,
-  slidesPerGroup: 3,
 
   pagination: {
     el: ".swiper-pagination",
@@ -293,6 +291,10 @@ const swiper = new Swiper(".mySwiper", {
 
   breakpoints: {
     0: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+    },
+    680: {
       slidesPerView: 2,
       slidesPerGroup: 2,
     },
@@ -302,6 +304,7 @@ const swiper = new Swiper(".mySwiper", {
     }
   }
 });
+
 
 
 }) //jquery end
