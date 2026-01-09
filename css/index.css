@@ -1,3 +1,8 @@
+html {
+  overflow-x: hidden;
+}
+
+
 header {
   position: fixed;
   top: 0;
@@ -8,7 +13,8 @@ header {
   align-items: center; 
   background-color: #A1C4EA;
   z-index: 100;
-  
+  overflow-x: hidden;
+overflow: hidden;
 }
 
 
@@ -66,14 +72,13 @@ nav {
 
 section{
     width: 100%;
-    height: 100vh;
-    overflow: hidden
+   height: 100svh;
 }
 
 body{
   margin: 0;
   height: 100vh;
-  overflow-x: hidden;
+
   }
 
 
@@ -90,6 +95,7 @@ body{
   background-position: calc(50% + 30px) center;
   background-size: contain; 
   background-color: #FFF;
+overflow: hidden;
 }
 
 
@@ -184,6 +190,7 @@ body{
   padding: 10px 10px;
   margin-left: -100px;
 animation: containerFloat 3s ease-in-out infinite;
+box-sizing: border-box;
 }
 
 .container_down{
@@ -319,6 +326,7 @@ text-shadow: 0 10px 10px rgba(161, 196, 234, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   
 }
 
@@ -1726,9 +1734,7 @@ top: 70%;
 /* 750 */
 @media (max-width: 750px) {
 
-#skill{
-  margin-top: 210px;
-}
+
   .card {
     min-height: 100px;      
     padding: 7px;          
@@ -1968,12 +1974,11 @@ height: auto;
   }
 
   #skill{
-    padding: 100px 0;
     box-sizing: border-box;
   }
 
   .skill_text{
-    margin-top: 150px;
+    margin-top: 40%;
   }
 
 .skill_text_bottom{
