@@ -305,6 +305,13 @@ const swiper = new Swiper(".mySwiper", {
   }
 });
 
+// contact
+const cards = document.querySelectorAll('.contact_card');
 
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('is-flipped');
+  });
+});
 
 }) //jquery end
