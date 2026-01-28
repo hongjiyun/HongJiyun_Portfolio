@@ -17,51 +17,77 @@ $(document).ready(function () {
   })
 
 
-  $(window).resize(function () {
-    resizeable()
-  })
+  // $(window).resize(function () {
+  //   resizeable()
+  // })
 
-  function resizeable() {
-    if ($(window).width() < 768) {
-      console.log("모바일에서 실행될 스크립트")
-    } else if ($(window).width() < 1200) {
-      console.log("태블릿에서 실행될 스크립트")
-    } else {
-      console.log("데스크탑에서 실행될 스크립트")
-    }
-  }
-  resizeable()
+  // function resizeable() {
+  //   if ($(window).width() < 768) {
+  //     console.log("모바일에서 실행될 스크립트")
+  //   } else if ($(window).width() < 1200) {
+  //     console.log("태블릿에서 실행될 스크립트")
+  //   } else {
+  //     console.log("데스크탑에서 실행될 스크립트")
+  //   }
+  // }
+  // resizeable()
 
 
  // 배경
-  const positions = [
-    { x: 20, y: 30, dx: 0.1, dy: 0.07, color: '#bbd5f1ff' },
-    { x: 80, y: 70, dx: 0.07, dy: 0.1, color: '#cee6ffff' },
-    { x: 30, y: 40, dx: 0.03, dy: 0.05, color: '#fff' },
-    { x: 50, y: 50, dx: 0.05, dy: 0.06, color: '#fff' }
-  ];
+ const intro = document.getElementById('intro');
+let rafId = null;
 
-  function updateBackground() {
-    positions.forEach(pos => {
-      pos.x += pos.dx;
-      pos.y += pos.dy;
+const positions = [
+  { x: 20, y: 30, dx: 0.1, dy: 0.07, color: '#bbd5f1ff' },
+  { x: 80, y: 70, dx: 0.07, dy: 0.1, color: '#cee6ffff' },
+  { x: 30, y: 40, dx: 0.03, dy: 0.05, color: '#fff' },
+  { x: 50, y: 50, dx: 0.05, dy: 0.06, color: '#fff' }
+];
 
+function updateBackground() {
+  positions.forEach(pos => {
+    pos.x += pos.dx;
+    pos.y += pos.dy;
 
-      if (pos.x > 80 || pos.x < 20) pos.dx = -pos.dx;
-      if (pos.y > 80 || pos.y < 20) pos.dy = -pos.dy;
-    });
+    if (pos.x > 80 || pos.x < 20) pos.dx *= -1;
+    if (pos.y > 80 || pos.y < 20) pos.dy *= -1;
+  });
 
-    const bg = positions.map(pos =>
-      `radial-gradient(circle at ${pos.x}% ${pos.y}%, ${pos.color}, transparent 70%)`
-    ).join(',');
+  const bg = positions.map(pos =>
+    `radial-gradient(circle at ${pos.x}% ${pos.y}%, ${pos.color}, transparent 70%)`
+  ).join(',');
 
-    document.body.style.background = bg;
-    document.body.style.backgroundBlendMode = "screen";
+  intro.style.background = bg;
+  intro.style.backgroundBlendMode = 'screen';
 
-    requestAnimationFrame(updateBackground);
-  }
+  rafId = requestAnimationFrame(updateBackground);
+}
 
+function startIntroBG() {
+  if (rafId !== null) return;
   updateBackground();
+}
+
+function stopIntroBG() {
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  intro.style.background = '';
+}
+
+/* 500px 이하 제거 */
+function checkWidth() {
+  if (window.innerWidth <= 500) {
+    stopIntroBG();
+  } else {
+    startIntroBG();
+  }
+}
+
+checkWidth();
+window.addEventListener('resize', checkWidth);
+
 
 
  //work
@@ -308,10 +334,15 @@ const swiper = new Swiper(".mySwiper", {
 // contact
 const cards = document.querySelectorAll('.contact_card');
 
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('is-flipped');
-  });
-});
+const isTouchDevice = window.matchMedia(
+  '(hover: none) and (pointer: coarse)'
+).matches;
 
+if (isTouchDevice) {
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('is-flipped');
+    });
+  });
+}
 }) //jquery end
