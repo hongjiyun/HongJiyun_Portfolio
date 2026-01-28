@@ -78,12 +78,12 @@ nav {
 
 section{
     width: 100%;
-   height: 100vh;
+    min-height: 100vh;
 }
 
 body{
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
 	user-select: none; 
   -webkit-user-select: none; 
   }
@@ -292,13 +292,16 @@ width: 100%;
 }
 
 .drop {
-  position: absolute;
+    position: absolute;
   top: -30px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  animation: drop 5s linear infinite;
   opacity: 0.5;
+
+  animation: drop 5s linear infinite;
+  will-change: transform;
+  pointer-events: none;
 
   &.drop-1 {
     left: 10%;
@@ -346,14 +349,9 @@ width: 100%;
 @keyframes drop {
   0% {
     transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  80% {
-    opacity: 0.8;
   }
   100% {
-    transform: translateY(100vh) scale(0.2);
-    opacity: 0;
+    transform: translateY(100vh) scale(0.8);
   }
 }
 
@@ -633,6 +631,13 @@ white-space: nowrap;
   width: max-content;
 }
 
+.img_box,
+.img_box_bottom {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+
 @keyframes scrolling_bottom {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -656,7 +661,7 @@ white-space: nowrap;
   /* work */
 #work{
   width: 100%;
-  height: 3000px;
+  min-height: 3000px;
   background-color: #ffffff;
   position: relative;
   z-index: 20;
@@ -694,6 +699,8 @@ white-space: nowrap;
   transition: opacity 0.3s ease;
   z-index: 99;
   -webkit-text-stroke: 0.8px #fff;
+   will-change: opacity;
+  transform: translateZ(0);
 }
 
 .text>h4{
@@ -1082,10 +1089,7 @@ border-top-left-radius: 100%;
   transition: transform 0.6s;
 }
 
-.contact_card:hover .card-inner {
-  transform: rotateY(180deg); 
-}
-
+.contact_card:hover .card-inner,
 .contact_card.is-flipped .card-inner {
   transform: rotateY(180deg);
 }
@@ -1442,6 +1446,11 @@ nav {
   box-sizing: border-box;
 }
 
+ .shape {
+    animation: none;
+    transform: none;
+  }
+
 .container_text_box{
    display: flex;
     flex-direction: column;
@@ -1536,6 +1545,10 @@ padding-top: 200px;
   -webkit-text-stroke: 0;
 text-shadow: 0 2px 15px rgba(0,0,0,0.35);
 
+}
+
+.contact_card {
+  cursor: pointer;
 }
 
 }
