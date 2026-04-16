@@ -227,7 +227,6 @@ window.addEventListener('resize', checkWidth);
 
 
 
-//Work 
 window.onload = function() {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
@@ -238,12 +237,20 @@ window.onload = function() {
   let isDragging = false;
   let startX, startY;
   let translateX = 0, translateY = 0;
+  let savedScrollY = 0; // 스크롤 위치 저장 변수 추가
 
   images.forEach(img => {
     img.onclick = function() {
+      savedScrollY = window.scrollY; // 현재 스크롤 위치 저장
       modal.style.display = "flex";
       modalImg.src = this.src;
-      document.body.style.overflow = "hidden"; 
+      
+      // overflow hidden 대신 position fixed로 처리
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.width = "100%";
+      
       resetImage();
     };
   });
@@ -259,7 +266,6 @@ window.onload = function() {
     modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   }
 
-  
   modal.onwheel = function(e) {
     e.preventDefault();
     const delta = e.deltaY;
@@ -271,16 +277,14 @@ window.onload = function() {
     updateTransform();
   };
 
-  
   modalImg.onmousedown = function(e) {
-    if (scale <= 1) return; 
+    if (scale <= 1) return;
     isDragging = true;
     startX = e.clientX - translateX;
     startY = e.clientY - translateY;
     modalImg.style.transition = "none";
   };
 
-  
   window.onmousemove = function(e) {
     if (!isDragging) return;
     translateX = e.clientX - startX;
@@ -288,21 +292,25 @@ window.onload = function() {
     updateTransform();
   };
 
-  
   window.onmouseup = function() {
     isDragging = false;
     modalImg.style.transition = "transform 0.1s ease-out";
   };
 
-  
   function closeModal() {
     modal.style.display = "none";
-    document.body.style.overflow = "auto";
+    
+    // body 스타일 복원 후 스크롤 위치 되돌리기
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, savedScrollY); // 저장된 위치로 복원
+    
     resetImage();
   }
 
   closeBtn.onclick = closeModal;
-
 };
 
 
