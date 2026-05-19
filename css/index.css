@@ -42,6 +42,35 @@ header h1 a {
   transform: translateY(-4px);
 }
 
+
+/* jp */
+.lang-menu {
+  display: flex;
+  align-items: center;
+  font-size: 20px;   
+  color: rgba(255, 255, 255, 0.6); 
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.lang-menu span {
+  margin: 0 8px;    
+  font-weight: 300;
+}
+
+.lang-btn {
+  color: rgba(255, 255, 255, 0.7) ; 
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.lang-btn:hover, 
+.lang-btn.active {
+  color: #ffffff ; 
+  font-weight: 800;
+}
+
 nav {
   margin-left: auto; 
   padding-right: 20px;
@@ -491,7 +520,7 @@ width: 100%;
 
 
 .info_text {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   margin: 0 auto;
   min-width: 0; 
@@ -1238,7 +1267,6 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     top: 30%;
     left: 50%;
     transform: translateX(-50%); 
-   gap:80px;
 
 }
 
@@ -1274,6 +1302,9 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 /* about - colum */
 @media (max-width: 930px) {
 
+  .lang-menu{
+    display: none;
+  }
 
 #about{
   padding-top: 80px;
