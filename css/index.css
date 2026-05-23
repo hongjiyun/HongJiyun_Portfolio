@@ -800,6 +800,16 @@ box-shadow: 0 0 20px 10px rgba(161, 196, 234, 0.6);
   right: 15%;
 }
 
+.img7{
+   top: 38%;
+  left: 7%;
+}
+
+.img8{
+  top: 28%;
+  right: 7%;
+}
+
 
 .work_img_name {
   max-width: 200px;
@@ -920,10 +930,11 @@ position: relative;
   border-radius: 30px;
 }
 
-.swiper_img_box1{background-image: url(../img/canmake_s.png);}
-.swiper_img_box2{background-image: url(../img/valorant_s.png);}
-.swiper_img_box3{background-image: url(../img/leeum_s.png);}
-.swiper_img_box4{background-image: url(../img/zerowaste_s.png);}
+.swiper_img_box1{background-image: url(../img/veltrix.png);}
+.swiper_img_box2{background-image: url(../img/canmake_s.png);}
+.swiper_img_box3{background-image: url(../img/valorant_s.png);}
+.swiper_img_box4{background-image: url(../img/leeum_s.png);}
+.swiper_img_box5{background-image: url(../img/zerowaste_s.png);}
 
 
 .swiper_about{
